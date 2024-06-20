@@ -1,0 +1,11 @@
+---
+- name: Copy IPs list to remote host
+  copy:
+    src: files/ips.txt
+    dest: /tmp/ips.txt
+
+- name: Block IPs using nftables
+  template:
+    src: block_ips.nft.j2
+    dest: /etc/nftables/block_ips.nft
+  notify: reload nftables

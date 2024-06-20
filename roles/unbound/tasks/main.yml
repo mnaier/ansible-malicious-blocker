@@ -1,0 +1,11 @@
+---
+- name: Copy domains list to remote host
+  copy:
+    src: files/domains.txt
+    dest: /etc/unbound/blocked_domains.txt
+
+- name: Configure Unbound to block domains
+  template:
+    src: block_domains.conf.j2
+    dest: /etc/unbound/unbound.conf.d/block_domains.conf
+  notify: reload unbound

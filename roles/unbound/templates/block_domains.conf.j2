@@ -1,0 +1,4 @@
+# Add configuration to block domains
+local-zone: "{{ item }}" refuse
+{% for item in lookup('file', '/etc/unbound/blocked_domains.txt').split('\n') %}
+{% endfor %}

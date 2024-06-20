@@ -1,0 +1,7 @@
+---
+- name: Block malicious IPs and domains
+  hosts: all
+  become: true
+  roles:
+    - role: nftables
+    - role: unbound

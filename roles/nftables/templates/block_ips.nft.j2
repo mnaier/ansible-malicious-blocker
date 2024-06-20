@@ -1,0 +1,9 @@
+#!/usr/sbin/nft -f
+
+table inet filter {
+    chain input {
+        {% for ip in lookup('file', '/tmp/ips.txt').split('\n') %}
+        ip saddr {{ ip }} drop
+        {% endfor %}
+    }
+}
