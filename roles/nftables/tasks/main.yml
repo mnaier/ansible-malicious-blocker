@@ -1,8 +1,26 @@
 ---
+- name: Install nftables
+  apt:
+    name: nftables
+    state: present
+  become: yes
 - name: Copy IPs list to remote host
-  copy:
-    src: files/ips.txt
-    dest: /tmp/ips.txt
+  ansible.builtin.copy:
+    remote_as: yes
+    src: files/ip_address.txt
+    dest: /tmp/ip_address.txt
+    owner: osboxes
+    group: osboxes
+    mode: 0644
+- name:
+  slurp:
+    src: /tmp/ip_address.txt
+  register: ip_list
+
+- name: Ensure nftables directory exists
+  file:
+    path: /etc/nftables
+    state: directory
 
 - name: Block IPs using nftables
   template:

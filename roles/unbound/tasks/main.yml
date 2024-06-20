@@ -1,4 +1,10 @@
 ---
+- name: Install Unbound Dns Server
+  apt:
+    name: unbound
+    state: present
+  become: ture
+
 - name: Copy domains list to remote host
   copy:
     src: files/domains.txt
