@@ -1,10 +1,10 @@
-# Deny IPs and Domains using Ansible, nftables, and unbound
+# Deny IPs and Domains using Ansible, nftables firewall, and unbound DNS
 
 This project automates the process of denying specific IP addresses using `nftables` and specific domain names using `unbound DNS` through Ansible playbooks.
 
 ## Directory Structure
-
-ansible-malicious-blocker/
+```
+ ansible-malicious-blocker/
 ├── deny.yml
 ├── roles/
 │ ├── nftables/
@@ -22,7 +22,7 @@ ansible-malicious-blocker/
 │ └── handlers/
 │ └── main.yml
 └── inventory # Your Ansible inventory file
-
+```
 ## Getting Started
 
 ### Prerequisites
@@ -37,5 +37,5 @@ ansible-malicious-blocker/
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/yourusername/deny-ips-domains.git
-   cd deny-ips-domains/ansible
+   git clone https://github.com/mnaier/ansible-malicious-blocker.git
+   cd ansible-malicious-blocker
